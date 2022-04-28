@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>
+            Your 🎩 product
+            <small>(Here are some <code>display: none;</code> elements with your customers data)</small>
+        </p>
+
+        <div class="hidden">
+
+            <h2>💸 Customer report</h2>
+            <h3>Customer:</b> Big Corp.</h3>
+
+            <p>
+                <b>Revenue:</b> <span id="revenue">$5000000</span>
+            </p>
+            <p>
+                <b>Market:</b> <span id="market">IT & Software Development</span>
+            </p>
+
+            <div>
+                <b>Competitors:</b>
+                <ul id="competitors">
+                    <li>Smaller Corp</li>
+                    <li>Yet another smaller Corp</li>
+                    <li>Significant competitor LTD</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <hr />
+
+    <div class="radio-container">
+        <p><code>iframe</code> from:</p>
+        <div>
+            <input type="radio" id="same-origin" name="iframe-origin" value="same-origin" checked>
+            <label for="same-origin">same-origin</label>
+        </div>
+
+        <div>
+            <input type="radio" id="cross-origin" name="iframe-origin" value="cross-origin">
+            <label for="cross-origin">cross-origin</label>
+        </div>
+    </div>
+
+    <div id="iframes-carusel"></div>
+
+    <div class="iframe-container">
+        <p id="iframe-code"></p>
+        <div id="iframe-slot"></div>
+    </div>
+
+    <script src="https://unpkg.com/shiki"></script>
+    <script src="https://unpkg.com/common-tags"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
+
+
+<!-- <button>Press me!</button>
+<script>
+  document.querySelector('button').addEventListener('click', () => alert('Clicked from srcdoc based iframe!'));
+</script> -->

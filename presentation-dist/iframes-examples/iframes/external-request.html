@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .container {
+            border: solid 1px black;
+        }
+
+        #error {
+            display: none;
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>Jokes API</h3>
+        <b>
+            📝 Your today's joke
+        </b> |
+        <button id="say-joke">Say joke!</button>
+
+        <p id="error">
+            😥 Oh, cannot display joke this time
+        </p>
+
+        <p id="joke"></p>
+    </div>
+
+    <div class="container">
+        <h3>Weather API</h3>
+        <b>
+            🌦 Todays weather for Gdańsk
+        </b> |
+        <button id="show-weather">Show weather!</button>
+
+        <p id="weather"></p>
+    </div>
+
+
+    <script type="module">       
+        import './handle-errors.js';
+
+        document.querySelector('#say-joke').addEventListener('click', () => sayJoke());
+        document.querySelector('#show-weather').addEventListener('click', () => showWeather());
+
+        function sayJoke() {
+            const queryParams = new URLSearchParams([['firstName', 'Joe'], ['lastName', 'Doe']]);
+            fetch(`http://api.icndb.com/jokes/random?${queryParams}`)
+                .then(response => response.json())
+                .then(({ type, value }) =>
+                    type !== 'success'
+                        ? displayError(true)
+                        : displayJoke(value.joke)
+                );
+        }
+
+        function showWeather(city = 'gdansk') {
+            fetch(`https://goweather.herokuapp.com/weather/${city}`)
+                .then(response => response.json())
+                .then(data => displayWeather(data));
+        }
+
+        function displayWeather({ temperature, wind, description }) {
+            document.querySelector('#weather').replaceChildren(`🌡 ${temperature} | 💨 ${wind} | 🗒 ${description}`);
+        }
+
+        function displayJoke(joke) {
+            document.querySelector('#joke').replaceChildren(`😂 ${decodeHTMLEntities(joke)}`);
+            displayError(false);
+        }
+
+        function displayError(show) {
+            document.querySelector('#error').style.display = show ? 'block' : 'none';
+        }
+
+        function decodeHTMLEntities(text) {
+            const textArea = document.createElement('textarea');
+            textArea.innerHTML = text;
+            return textArea.value;
+        }
+    </script>
+</body>
+
+</html>

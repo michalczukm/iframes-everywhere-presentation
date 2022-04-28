@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<body>
+    <form>
+        <label for="code">Put JS code to be evaluated:</label>
+
+        <textarea id="code" name="code" rows="5" cols="33">
+            document.querySelector('#existing-id').replaceChildren('👋 hello there!');
+        </textarea>
+        <input type="submit" value="go!" />
+    </form>
+
+    <p>
+        Element with <code>id="existing-id"</code>:
+    <div id="existing-id"></div>
+    </p>
+
+    <script type="module">
+        import './handle-errors.js';
+
+        document.querySelector('form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const codeToEval = event.target.elements['code'].value.trim();
+
+            eval(codeToEval);
+        });
+    </script>
+</body>
+
+</html>

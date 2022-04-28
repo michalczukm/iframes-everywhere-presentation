@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #error {
+            display: none;
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <b>
+        Jokes on you now!
+    </b>
+
+    <p>Press <button id="add-to-host">here</button> to see what not secured IFrame can add to the host</p>
+    <p>Press <button id="open-window">here</button> to check if it can open new window</p>
+    <p>Press <button id="redirect-host">here</button> to check if it can redirect host</p>
+
+    <script type="module">
+        import './handle-errors.js';
+
+        document.querySelector('#add-to-host').addEventListener('click', () => {
+            const honeyPotButton = document.createElement('button');
+            honeyPotButton.innerText = 'You won an iPhone📱! Click here to collect it.';
+            honeyPotButton.addEventListener('click', function () {
+                this.ownerDocument.location.href = 'https://example.com';
+            });
+
+            window.parent.document.querySelector('div').appendChild(honeyPotButton);
+        });
+
+        document.querySelector('#open-window').addEventListener('click', () => {
+            window.open('https://developer.mozilla.org/en-US/docs/Web/API/Window/open');
+        });
+
+        document.querySelector('#redirect-host').addEventListener('click', () => {
+            window.parent.location.href = 'https://example.com';
+        });
+    </script>
+</body>
+
+</html>

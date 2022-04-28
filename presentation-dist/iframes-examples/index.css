@@ -1,0 +1,54 @@
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+iframe {
+    width: 50vw;
+    height: 350px;
+    border: 1px blue dashed;
+}
+
+hr {
+    width: 100%;
+}
+
+button {
+    margin: 4px;
+}
+
+.current-button {
+    font-weight: bolder;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+}
+
+.radio-container > * {
+    padding: 4px;
+}
+
+.iframe-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.iframe-container > * {
+    padding: 4px
+}
+
+.hidden {
+    display: none;
+}

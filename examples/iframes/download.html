@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/static.css">
+    <title>Document</title>
+    <style>
+        .content {
+            display: flex;
+            align-items: center;
+        }
+
+        .content figure {
+            max-width: 50%;
+            object-fit: contain;
+        }
+
+        .content figure img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <figure>
+            <img src="assets/static_img-from-same-domain.png" alt="" srcset="">
+            <figcaption>
+                Served from same domain as IFrame
+                (<a href="https://pixabay.com/illustrations/classic-gold-ornate-antique-photo-1649131/"
+                    target="_blank">source: pixabay.com</a>)
+            </figcaption>
+        </figure>
+        <a href="assets/static_img-from-same-domain.png" download="image">
+            <button>Download this image</button>
+        </a>
+    </div>
+
+    <script type="module">
+        import './handle-errors.js';
+    </script>
+</body>
+
+</html>

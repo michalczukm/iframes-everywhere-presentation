@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.content figure {
+  max-width: 50%;
+  object-fit: contain;
+}
+
+.content figure img {
+  max-width: 100%;
+  max-height: 100%;
+}

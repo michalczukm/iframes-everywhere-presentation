@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>With permissions</title>
+    <style>
+        container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <video controls autoplay style="height:260px; width: 260px;"></video>
+        <p>
+            <button id="grab-camera" type="button">Grab video</button>
+        </p>
+    </div>
+
+    <script type="module">
+        import './handle-errors.js';
+
+        document.querySelector('#grab-camera').addEventListener('click', () => grabCamera());
+
+        async function grabCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: true
+                });
+    
+                var mediaControl = document.querySelector('video');
+                mediaControl.srcObject = stream;
+    
+                mediaControl.play();
+            } catch (error) {
+                throw error;
+            }
+        }
+    </script>
+</body>

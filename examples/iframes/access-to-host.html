@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        #error {
+            display: none;
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <b>
+        Jokes on you now!
+    </b>
+
+    <p>Here is your data 👇</p>
+
+    <code>
+        <pre id="host-data">
+
+        </pre>
+    </code>
+
+
+    <p id="host-data"></p>
+
+    <script type="module">
+        import './handle-errors.js';
+
+        const parentDocument = window.parent.document;
+
+        const hostData = {
+            'scraped from HTML': {
+                revenue: parentDocument.querySelector('#revenue').innerHTML,
+                market: parentDocument.querySelector('#market').innerHTML,
+                competitors: Array.from(parentDocument.querySelectorAll('#competitors > li'))
+                    .map(item => item.innerHTML)
+            },
+            localStorage: { ...window.parent.localStorage }
+        }
+
+        document.querySelector('#host-data').replaceChildren(JSON.stringify(hostData, null, 2));
+    </script>
+</body>
+
+</html>
