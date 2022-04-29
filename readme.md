@@ -8,7 +8,7 @@ Nasza prezentacja @michalczukm & @cytrowski o tym po co nam iframe'y i dlaczego 
 
 * [prezentacja w .pdf](./presentation.pdf)
 * [przykłady których używamy podczas prezentacji](./examples/)
-* video ... soon 🤞
+* [🎥 video, z Dev.js Summit 2022](https://www.youtube.com/watch?v=QMLcaorI8Mc)
 
 ## Abstrakt
 
